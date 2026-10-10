@@ -1,0 +1,254 @@
+/* Reset default spacing and make sizing predictable */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Colorful gradient background with the card centered on screen */
+body {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff 0%, #fce7f3 50%, #dbeafe 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* The form card */
+.card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 38px 32px;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(79, 70, 229, 0.18);
+  border-top: 5px solid #6366f1;
+  animation: fadeUp 0.6s ease;
+}
+
+/* Card slides up when the page loads */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Round icon at the top of the card */
+.logo {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  box-shadow: 0 8px 18px rgba(99, 102, 241, 0.35);
+}
+
+h1 {
+  font-size: 1.7rem;
+  color: #1e1b4b;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+/* Each label + input + error group */
+.form-group {
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #374151;
+  margin-bottom: 7px;
+}
+
+/* Wrapper lets us place the icon and Show/Hide button inside the input */
+.input-wrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none; /* clicks go through to the input */
+}
+
+input {
+  width: 100%;
+  padding: 13px 14px 13px 42px; /* extra left padding makes room for the icon */
+  font-size: 1rem;
+  color: #111827;
+  background-color: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+/* Extra right padding on password so text does not go under the Show button */
+#password {
+  padding-right: 70px;
+}
+
+input:focus {
+  background-color: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* Classes added by JavaScript to show invalid / valid state */
+input.invalid {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+input.invalid:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+}
+
+input.valid {
+  border-color: #22c55e;
+  background-color: #f0fdf4;
+}
+
+input.valid:focus {
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+}
+
+/* Show / Hide password button */
+.toggle-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6366f1;
+  background: #eef2ff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggle-btn:hover {
+  background: #e0e7ff;
+}
+
+/* Red error text below the input */
+.error {
+  display: block;
+  color: #dc2626;
+  font-size: 0.84rem;
+  font-weight: 500;
+  margin-top: 6px;
+  min-height: 1.2em; /* keeps layout from jumping when text appears */
+}
+
+/* Only animate when the error actually has text in it */
+.error:not(:empty) {
+  animation: slideIn 0.25s ease;
+}
+
+.error:not(:empty)::before {
+  content: "⚠ ";
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Register button (enabled state) */
+.submit-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.5);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Disabled button: flat gray, no shadow, not-allowed cursor */
+.submit-btn:disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Green success message box */
+.success {
+  margin-top: 16px;
+  text-align: center;
+  font-weight: 600;
+  color: #15803d;
+}
+
+.success:not(:empty) {
+  padding: 12px;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  border-radius: 10px;
+  animation: slideIn 0.3s ease;
+}
+
+.success:not(:empty)::before {
+  content: "✅ ";
+}
+
+/* Smaller screens */
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 20px;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+  }
+}

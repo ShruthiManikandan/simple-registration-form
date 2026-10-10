@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Form</title>
+
+  <!-- Link the CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="card">
+    <div class="logo">✨</div>
+    <h1>Create Account</h1>
+    <p class="subtitle">Join us today! It only takes a minute.</p>
+
+    <!-- novalidate turns off the browser's built-in validation so ours is used -->
+    <form id="registerForm" novalidate>
+
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-wrapper">
+          <span class="icon">👤</span>
+          <input type="text" id="name" placeholder="Enter your name" autocomplete="name" />
+        </div>
+        <span class="error" id="nameError" role="alert"></span>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-wrapper">
+          <span class="icon">✉️</span>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <span class="error" id="emailError" role="alert"></span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <span class="icon">🔒</span>
+          <input type="password" id="password" placeholder="At least 6 characters" autocomplete="new-password" />
+          <!-- type="button" so it does not submit the form -->
+          <button type="button" id="togglePassword" class="toggle-btn">Show</button>
+        </div>
+        <span class="error" id="passwordError" role="alert"></span>
+      </div>
+
+      <!-- Disabled until all fields are valid -->
+      <button type="submit" id="submitBtn" class="submit-btn" disabled>Register</button>
+
+      <!-- Success message appears here -->
+      <p class="success" id="successMessage"></p>
+    </form>
+  </main>
+
+  <!-- Link the JavaScript file (at the end so the HTML loads first) -->
+  <script src="script.js"></script>
+</body>
+</html>
